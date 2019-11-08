@@ -8,29 +8,46 @@ using System.Threading.Tasks;
 namespace Problem2
 {
     class Program
+    { 
+          public static void Main()
+            {
+             int [] array= new int[5] {1,2,3,4,5};
+            foreach(int itm in array)
+                { Console.WriteLine(itm);}
+            Console.WriteLine("Removing the element at index 3\n");
+            int removAt=3;
+           int [] newArray= RemoveArray(array,removAt);
+            foreach (int currentValue in newArray) 
+                {Console.WriteLine(currentValue);}
+        Console.ReadKey();
+            }
+
+       public static int [] RemoveArray(int[] array, int removAt)
     {
-       public static void Main()
+        int difference = 0, currentValue=0;
+        //get new Array length
+        for (int i=0; i<array.Length; i++)
         {
-            ArrayList myList = new ArrayList(5);
-            myList.Add(1);
-            myList.Add(3);
-            myList.Add(5);
-            myList.Add(7);
-            myList.Add(9);
-            foreach (int itm in myList)
+            if (array[i]==removAt)
             {
-                Console.WriteLine(itm);
+                difference += 1;
             }
-            Console.WriteLine("\nInput number");
-            int required_number =Convert.ToInt32(Console.ReadLine());
-            
-            Console.WriteLine("The ArrayList after Removing elements");
-            myList.RemoveAt(required_number);
-            foreach (int itm in myList)
-            {
-                Console.WriteLine(itm);
-            }
-           
         }
+        //create new array
+        int[] newArray = new int[array.Length-difference];
+        for (int i = 0; i < array.Length; i++ )
+        {
+            if (array[i] != removAt)
+            {
+                newArray[currentValue] = array[i];
+                currentValue += 1;
+            }
+        }
+
+        return newArray;
+    }
+    }
+        
 }
-}
+
+
