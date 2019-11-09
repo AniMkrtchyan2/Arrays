@@ -8,16 +8,34 @@ namespace Problem1
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            double[] Array = new double[] { 1.5, 3.5, 4.55 };
-            int[] Array2 = new int[3];
-            foreach (var d in Array)
-                Console.WriteLine(d);
-            Console.WriteLine("------------------------");
-            Array2 = Array.Select(d => (int)d).ToArray();
-            foreach(var i in Array2 )
-                Console.WriteLine(i);
+            double[] doubleArray = new double[] { 1.3, 3.5, 4.55 };
+            int lenght=doubleArray.GetLength(0);
+            Console.WriteLine("Input double elements Array");
+            foreach(double itm in doubleArray)
+                {
+                Console.Write("{0}"," "+itm);
+                }
+            Console.Write(Environment.NewLine+ "Return int elements Array"+Environment.NewLine);
+          int [] intArray=changingArray(doubleArray, lenght);
+            foreach(int itm in intArray)
+                {
+                Console.Write("{0}"," "+itm);
+                }
+            Console.ReadKey();
+
         }
+        static int [] changingArray(double[] doubleArray, int length)
+            {
+           int[] intArray = new int[length];
+            for (int i=0; i<length; ++i)
+            {
+            intArray[i] =Convert.ToInt32(doubleArray[i]);
+            }
+            return intArray;
+            }
     }
-}
+
+   }
+
